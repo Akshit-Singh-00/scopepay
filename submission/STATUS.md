@@ -1,4 +1,6 @@
-# Submission readiness
+# Submission status
+
+**Submitted to the PayPal AI Hackathon.** The user completed final submission on 7 October 2026. Devpost displayed “Project submitted!” and the project page lists the hackathon under “Submitted to” and in its submission history.
 
 - Implemented: local review and change-order interface, OpenAI and PayPal sandbox adapters, persistence and duplicate-request safeguards.
 - Verified: automated tests and browser sample-flow checks; the published source package also passed its ten original tests after fresh extraction. Automated provider tests simulate API responses.
@@ -11,8 +13,8 @@
 - Verified end to end: the approved synthetic $1.00 invoice SP-324e0fd1b70640b9a372 was activated with both email-notification flags disabled. The user completed checkout using the US sandbox buyer. ScopePay's authenticated PayPal refresh returned PAID on 7 October 2026 at 12:44 IST. Evidence: `screenshots/scopepay-sandbox-invoice.png` and `screenshots/scopepay-sandbox-paid.png`.
 - The in-app browser could not open PayPal's checkout popup; the user completed that step in their regular browser.
 - Published: [public YouTube demo](https://youtu.be/x0UYXrd_9oM), under two minutes. YouTube confirmed publication on 7 October 2026 with public visibility and no issues found by its upload checks. This captioned walkthrough shows actual captured AI output, reviewed prices, the active invoice, and authenticated PAID status; it is not a continuous screen recording.
-- Saved to Devpost: project story, JavaScript/Node.js/PayPal tags, repository link, public YouTube demo, inline AI and payment screenshots, and all required additional information. Devpost now shows 4/5 steps complete. The screenshots were verified to render in the project preview.
-- The submitter confirmed the team's eligibility. The final rules/terms agreement and final submission remain unchecked and unsubmitted, pending entrant review.
-- Devpost's earlier maintenance outage is resolved. Preview: https://devpost.com/software/scopepay
+- Saved to Devpost: project story, JavaScript/Node.js/PayPal tags, repository link, public YouTube demo, inline AI and payment screenshots, and all required additional information. The screenshots were verified to render on the project page.
+- The submitter confirmed the team's eligibility, completed the rules/terms checkbox, and clicked the final submission button. Successful submission was independently verified in Devpost.
+- Project page: https://devpost.com/software/scopepay
 
-The draft is ready for entrant review before the final rules/terms agreement and submission. Sample screenshots are clearly identified and are separate from the verified AI and payment evidence.
+No further submission action is required. Keep the public repository and demo available for judging. Sample screenshots are clearly identified and are separate from the verified AI and payment evidence.
