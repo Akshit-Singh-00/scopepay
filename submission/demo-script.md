@@ -2,7 +2,7 @@
 
 Target duration: 2 minutes 40 seconds. Record the real running application with synthetic project content. Do not record credentials, personal account details, or browser tabs unrelated to this project.
 
-This is a script, not the final submission video. Real ChatGPT-plan analysis has been verified. A local captioned screenshot draft covers the introduction, actual AI output, evidence, and synthetic $1 pricing. It is not yet uploaded. Complete the PayPal payment segment before recording or publishing the final demonstration; do not claim payment success without verification.
+This is a recording script. Real ChatGPT-plan analysis and the complete $1 sandbox payment flow have been verified. A local captioned screenshot walkthrough covers the introduction, actual AI output, evidence, synthetic pricing, activated invoice, and authenticated PAID result. It is explicitly labeled as a screenshot walkthrough, not a continuous screen recording, and is not yet uploaded.
 
 | Time | Screen and action | Narration |
 |---|---|---|

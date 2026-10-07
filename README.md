@@ -2,7 +2,7 @@
 
 An AI assistant for freelancers that checks new client requests against an agreed brief, quotes its evidence, and creates PayPal sandbox invoices for reviewed extra work.
 
-**Status:** local prototype. PayPal sandbox OAuth, draft creation, and draft retrieval have been verified against the real sandbox API. Activation exposed an India-to-India account restriction; a cross-border sandbox buyer is still needed. Real OpenAI analysis and end-to-end sandbox payment remain unverified. Prewritten sample results are explicitly labeled and cannot create invoices. This is not yet a completed hackathon submission.
+**Status:** local prototype with a verified end-to-end sandbox flow. Real ChatGPT-plan scope analysis produced the reviewed additions; a $1.00 PayPal sandbox invoice was created, activated, and paid using a US test buyer. ScopePay's authenticated PayPal status refresh confirmed PAID on 7 October 2026. Prewritten sample results are explicitly labeled and cannot create invoices. Hackathon submission still awaits the public demo and entrant review.
 
 ## Run locally
 
@@ -52,7 +52,7 @@ Tests cover evidence validation, exact money arithmetic, prohibited invoice item
 
 ## Hackathon work remaining
 
-See [submission/STATUS.md](submission/STATUS.md) for submission readiness. Real ChatGPT-plan sign-in, model discovery, and synthetic scope analysis passed on 7 October 2026. PayPal sandbox OAuth, draft creation, and retrieval also passed. The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. Still required: cross-border sandbox payment verification, judge-flow rehearsal, demo video, final project-story updates, eligibility review, and entrant approval before final submission. Freelancer feedback is a future validation step. Do not claim the full payment flow has been demonstrated until it is tested.
+See [submission/STATUS.md](submission/STATUS.md) for submission readiness. Real ChatGPT-plan sign-in, model discovery, and synthetic scope analysis passed on 7 October 2026. PayPal sandbox OAuth, invoice creation, activation with emails disabled, test-buyer payment, and authenticated PAID status retrieval also passed. See the [payment evidence](submission/screenshots/scopepay-sandbox-paid.png). The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. Still required: public demo video, final Devpost fields, eligibility review, and entrant approval before final submission. Freelancer feedback is a future validation step.
 
 ## API references
 
