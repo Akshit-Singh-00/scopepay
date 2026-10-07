@@ -129,3 +129,17 @@ test('Incomplete streams and quota failures do not produce reviews or retry thro
   }), /No paid API fallback/);
   assert.equal(calls, 2);
 });
+
+test('Completed plan streams can supply result text through deltas and done events', async () => {
+  const json = JSON.stringify(sample);
+  for (const events of [
+    [{ type: 'response.output_text.delta', delta: json.slice(0, 20) }, { type: 'response.output_text.delta', delta: json.slice(20) }],
+    [{ type: 'response.output_text.delta', delta: json.slice(0, 20) }, { type: 'response.output_text.done', text: json }]
+  ]) {
+    const result = await analyzeWithChatGPT(sample.brief, sample.request, 'model', 'token', async () => streamResponse([
+      ...events, { type: 'response.completed', response: { status: 'completed', output: [] } }
+    ]));
+    assert.equal(result.length, 3);
+    assert.ok(result.every(row => row.evidenceVerified));
+  }
+});

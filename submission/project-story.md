@@ -12,7 +12,7 @@ The freelancer reviews the evidence, selects extra work, edits item descriptions
 
 The PayPal adapter implements draft invoice creation, payment-link activation with email notifications disabled, and authenticated invoice-status retrieval. A browser return URL cannot mark an invoice paid.
 
-**Current verification status:** the local interface and automated tests work. Real PayPal sandbox OAuth, draft creation, and draft retrieval have passed. Activating a synthetic test invoice exposed PayPal's restriction on India-to-India invoicing; cross-border buyer setup is pending. Real OpenAI analysis and end-to-end sandbox payment remain unverified. The prewritten sample is clearly labeled and cannot create invoices. This status must be updated with actual verification evidence before final submission.
+**Current verification status:** real ChatGPT sign-in, model discovery, and scope analysis through the user's plan have passed. The synthetic test produced three classifications with source quotations verified by the server. Real PayPal sandbox OAuth, draft creation, and draft retrieval have also passed. Activating a test invoice exposed PayPal's restriction on India-to-India invoicing; cross-border buyer setup and end-to-end sandbox payment remain pending. The separate prewritten sample is clearly labeled and cannot create invoices. This status must be updated with actual payment verification evidence before final submission.
 
 ## How we built it
 
@@ -28,7 +28,7 @@ An exact quotation does not guarantee a correct interpretation. ScopePay separat
 
 ## Accomplishments
 
-We implemented the local review and pricing flow and provider adapters, and passed automated tests covering evidence validation, money arithmetic, sandbox restrictions, duplicate requests, restart persistence, and uncertain invoice outcomes. These tests use simulated provider responses and do not establish live payment success. Separately, real sandbox OAuth, draft creation, and draft retrieval have been verified.
+We implemented the local review and pricing flow and provider adapters, and passed 19 automated tests covering evidence validation, money arithmetic, sandbox restrictions, duplicate requests, restart persistence, uncertain invoice outcomes, and ChatGPT authentication and streaming. These tests use simulated provider responses and do not establish live payment success. Separately, real ChatGPT-plan analysis and PayPal sandbox OAuth, draft creation, and draft retrieval have been verified.
 
 ## What we learned
 
@@ -36,4 +36,4 @@ Human review needs to be part of the workflow. A useful scope assistant should m
 
 ## What's next
 
-Complete real API and sandbox payment verification, validate the problem with freelancers, and record a demonstration of the verified flow. Before any public deployment, add authentication, authorization, a transactional database, and verified webhooks. The current build is a local, single-user prototype using USD and sandbox accounts.
+Complete sandbox payment verification, validate the problem with freelancers, and record a demonstration of the verified flow. Before any public deployment, add authentication, authorization, a transactional database, and verified webhooks. The current build is a local, single-user prototype using USD and sandbox accounts.

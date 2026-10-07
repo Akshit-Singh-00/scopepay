@@ -52,7 +52,7 @@ Tests cover evidence validation, exact money arithmetic, prohibited invoice item
 
 ## Hackathon work remaining
 
-See [submission/STATUS.md](submission/STATUS.md) for submission readiness. The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. Still required: real AI and complete sandbox verification, judge-flow rehearsal, demo video, final project-story updates, eligibility review, and entrant approval before final submission. Freelancer feedback is a future validation step. Do not claim the full integration has been demonstrated until the real flow is tested.
+See [submission/STATUS.md](submission/STATUS.md) for submission readiness. Real ChatGPT-plan sign-in, model discovery, and synthetic scope analysis passed on 7 October 2026. PayPal sandbox OAuth, draft creation, and retrieval also passed. The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. Still required: cross-border sandbox payment verification, judge-flow rehearsal, demo video, final project-story updates, eligibility review, and entrant approval before final submission. Freelancer feedback is a future validation step. Do not claim the full payment flow has been demonstrated until it is tested.
 
 ## API references
 
