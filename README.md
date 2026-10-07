@@ -2,7 +2,7 @@
 
 An AI assistant for freelancers that checks new client requests against an agreed brief, quotes its evidence, and creates PayPal sandbox invoices for reviewed extra work.
 
-**Status:** local prototype. Real OpenAI and PayPal API adapters are implemented, but live API calls and end-to-end sandbox payments have not yet been verified. Prewritten sample results are explicitly labeled and cannot create invoices. This is not yet a completed hackathon submission.
+**Status:** local prototype. PayPal sandbox OAuth, draft creation, and draft retrieval have been verified against the real sandbox API. Activation exposed an India-to-India account restriction; a cross-border sandbox buyer is still needed. Real OpenAI analysis and end-to-end sandbox payment remain unverified. Prewritten sample results are explicitly labeled and cannot create invoices. This is not yet a completed hackathon submission.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ Open <http://127.0.0.1:4317>. Select **Explore sample results** to try the inter
 1. Copy `.env.example` to `.env` in this directory. On PowerShell: `Copy-Item .env.example .env`.
 2. Set `OPENAI_API_KEY` and an `OPENAI_MODEL` available to your account that supports Structured Outputs. API access and any billing must be enabled by the account owner. The sample model name is configurable.
 3. In the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/), create a **sandbox** REST app. Put its client ID and secret in `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET`.
-4. Set `PAYPAL_INVOICER_EMAIL` to your sandbox business account email and `PAYPAL_TEST_RECIPIENT` to your sandbox personal test account email. These must be test accounts, not real customers. Use a USD-capable sandbox account for this first version.
+4. Set `PAYPAL_INVOICER_EMAIL` to your sandbox business account email and `PAYPAL_TEST_RECIPIENT` to your sandbox personal test account email. These must be test accounts, not real customers. Use a USD-capable sandbox account for this first version. An India-based sandbox merchant needs a buyer outside India: domestic invoice activation is rejected by PayPal.
 5. Restart `npm start`. Connection badges mean configuration is present; they do not assert successful authentication.
 6. Load the example, select **Analyze the scope**, and review the model's output. This transmits the brief and client request to OpenAI. Begin with synthetic content.
 7. Choose eligible extra-work items, edit descriptions, and set quantities and prices. Obtain client approval outside the app, then check the approval box and create the sandbox invoice. The app records your confirmation; it does not independently verify client consent.
@@ -50,7 +50,7 @@ Tests cover evidence validation, exact money arithmetic, prohibited invoice item
 
 ## Hackathon work remaining
 
-See [submission/STATUS.md](submission/STATUS.md) for submission readiness. Still required: real AI and sandbox verification, freelancer feedback, a public repository, judge access, demo video, final project-story updates, eligibility review, and final submission. Do not claim integrations have been demonstrated until the real flow is tested.
+See [submission/STATUS.md](submission/STATUS.md) for submission readiness. The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. Still required: real AI and complete sandbox verification, judge-flow rehearsal, demo video, final project-story updates, eligibility review, and entrant approval before final submission. Freelancer feedback is a future validation step. Do not claim the full integration has been demonstrated until the real flow is tested.
 
 ## API references
 

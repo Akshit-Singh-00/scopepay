@@ -47,6 +47,17 @@ test('PayPal adapter locks sandbox and suppresses emails on activation', async (
   assert.equal(calls[0].body.items[0].unit_amount.value, '0.29');
   assert.deepEqual(calls.at(-1).body, { send_to_recipient: false, send_to_invoicer: false });
 });
+test('PayPal explains the India domestic invoice restriction without exposing response data', async () => {
+  const paypal = new PayPal({}, async () => Response.json({
+    name: 'MEDIA_TYPE_NOT_ACCEPTABLE', message: 'private provider payload',
+    details: [{ issue: 'INR_FOREIGN_CURRENCY_BLOCKED' }]
+  }, { status: 406 }));
+  await assert.rejects(paypal.call('/INV2-TEST-1234/send', 'POST', {}, 'test-token'), error => {
+    assert.match(error.message, /sandbox buyer outside India/);
+    assert.ok(!error.message.includes('private provider payload'));
+    return true;
+  });
+});
 async function fixture(t, overrides = {}) {
   const dataDir = await mkdtemp(join(tmpdir(), 'scopepay-test-'));
   let creates = 0;
