@@ -10,9 +10,9 @@
 - Configured: an optional OpenAI API key is saved locally and excluded from Git. The app never switches to API-key billing automatically.
 - Verified end to end: the approved synthetic $1.00 invoice SP-324e0fd1b70640b9a372 was activated with both email-notification flags disabled. The user completed checkout using the US sandbox buyer. ScopePay's authenticated PayPal refresh returned PAID on 7 October 2026 at 12:44 IST. Evidence: `screenshots/scopepay-sandbox-invoice.png` and `screenshots/scopepay-sandbox-paid.png`.
 - The in-app browser could not open PayPal's checkout popup; the user completed that step in their regular browser.
-- Prepared: a captioned screenshot walkthrough showing actual AI output, reviewed prices, the active invoice, and the authenticated PAID result. This is a walkthrough of captured states, not a continuous screen recording. It is not uploaded yet.
-- Pending: a public YouTube demo; final submission fields; and entrant review.
+- Published: [public YouTube demo](https://youtu.be/x0UYXrd_9oM), under two minutes. YouTube confirmed publication on 7 October 2026 with public visibility and no issues found by its upload checks. This captioned walkthrough shows actual captured AI output, reviewed prices, the active invoice, and authenticated PAID status; it is not a continuous screen recording.
+- Pending: final submission fields and entrant review.
 - Devpost displayed planned maintenance during the 7 October submission-editing attempt. No final submission was made.
-- Devpost project-details saving currently requires the missing YouTube URL. Do not insert placeholder links.
+- The real YouTube URL is ready to enter once Devpost's project editor is available. It has not yet been saved to Devpost.
 
 This project is not yet submission-ready. Sample screenshots are clearly identified and are not evidence of real AI or payment verification.

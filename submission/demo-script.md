@@ -2,7 +2,7 @@
 
 Target duration: 2 minutes 40 seconds. Record the real running application with synthetic project content. Do not record credentials, personal account details, or browser tabs unrelated to this project.
 
-This is a recording script. Real ChatGPT-plan analysis and the complete $1 sandbox payment flow have been verified. A local captioned screenshot walkthrough covers the introduction, actual AI output, evidence, synthetic pricing, activated invoice, and authenticated PAID result. It is explicitly labeled as a screenshot walkthrough, not a continuous screen recording, and is not yet uploaded.
+This is a recording script. Real ChatGPT-plan analysis and the complete $1 sandbox payment flow have been verified. The [published public demo](https://youtu.be/x0UYXrd_9oM) is a captioned screenshot walkthrough under two minutes covering the introduction, actual AI output, evidence, synthetic pricing, activated invoice, and authenticated PAID result. It is explicitly labeled as a screenshot walkthrough, not a continuous screen recording.
 
 | Time | Screen and action | Narration |
 |---|---|---|
@@ -15,4 +15,4 @@ This is a recording script. Real ChatGPT-plan analysis and the complete $1 sandb
 | 2:15–2:30 | Return and refresh status | Payment status comes from PayPal's authenticated API, not a success-page redirect. |
 | 2:30–2:40 | Show limitation and conclusion | ScopePay connects the request, scope evidence, reviewed price, and invoice. It is a local prototype; hosted access controls and freelancer validation are next. |
 
-Upload the finished recording to YouTube with public visibility, as required by the official rules. Put the actual video URL in Devpost; never use a placeholder or unrelated video.
+The public YouTube URL is https://youtu.be/x0UYXrd_9oM. Add it to Devpost once the project editor is available; the latest attempt encountered planned maintenance.
