@@ -80,12 +80,14 @@ test('API rejects cross-origin writes, secret file access and sample invoices', 
   const app = await fixture(t);
   assert.equal((await app.request('/api/sample', {}, { Origin: 'https://attacker.test' })).status, 403);
   assert.equal((await app.request('/.env')).status, 404);
+  assert.equal((await app.request('/api/analyze', { brief: sample.brief, request: sample.request })).status, 400);
+  assert.equal((await app.request('/api/chatgpt/sign-in', {}, { Origin: 'https://attacker.test' })).status, 403);
   assert.equal((await app.request('/api/orders', { analysisId: 'sample', approved: true })).status, 400);
   assert.equal(app.creates, 0);
 });
 test('concurrent invoice requests and restart replays create only one invoice', async t => {
   const app = await fixture(t);
-  const analysis = await (await app.request('/api/analyze', { brief: sample.brief, request: sample.request })).json();
+  const analysis = await (await app.request('/api/analyze', { brief: sample.brief, request: sample.request, source: 'api' })).json();
   const payload = { analysisId: analysis.id, approved: true, items: [{ id: '2', title: 'French version', price: '500.25', quantity: 1 }] };
   assert.equal((await app.request('/api/orders', { ...payload, approved: false })).status, 400);
   const [a, b] = await Promise.all([app.request('/api/orders', payload), app.request('/api/orders', payload)]);
@@ -98,7 +100,7 @@ test('concurrent invoice requests and restart replays create only one invoice', 
 test('unknown create outcomes are persisted and never automatically retried', async t => {
   let calls = 0;
   const app = await fixture(t, { paypal: { token: async () => 'test', create: async () => { calls++; throw new Error('network timeout'); } } });
-  const analysis = await (await app.request('/api/analyze', { brief: sample.brief, request: sample.request })).json();
+  const analysis = await (await app.request('/api/analyze', { brief: sample.brief, request: sample.request, source: 'api' })).json();
   const payload = { analysisId: analysis.id, approved: true, items: [{ id: '2', title: 'French version', price: '100', quantity: 1 }] };
   assert.equal((await app.request('/api/orders', payload)).status, 500);
   await app.restart();

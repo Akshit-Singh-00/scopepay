@@ -18,7 +18,10 @@ async function work(fn) {
   finally { state.busy = false; document.querySelectorAll('button').forEach(button => { button.disabled = false; }); syncControls(); }
 }
 function syncControls() {
-  $('analyze').disabled = state.busy || !state.data?.config.ai;
+  const usePlan = $('ai-source').value === 'chatgpt';
+  $('chatgpt-controls').hidden = !usePlan; $('api-billing-note').hidden = usePlan;
+  $('analyze').disabled = state.busy || (usePlan ? !state.data?.chatgpt.sharing || !$('chatgpt-model').value : !state.data?.config.ai);
+  $('chatgpt-signout').hidden = !state.data?.chatgpt.connected;
   const existing = state.data?.orders.find(order => order.analysisId === state.analysis?.id);
   $('create-invoice').disabled = state.busy || !state.data?.config.paypal || state.analysis?.mode !== 'ai' || !$('approval').checked || !!existing;
   $('invoice-help').textContent = existing ? 'This review already has an invoice attempt. Use the saved invoice below.' : state.analysis?.mode === 'sample' ? 'Sample results cannot create invoices. Configure AI access and run a real analysis first.' : !state.data?.config.paypal ? 'Add PayPal sandbox credentials and test account emails to .env, then restart.' : 'The recipient is restricted to the sandbox test account configured in .env. No email will be sent.';
@@ -26,9 +29,26 @@ function syncControls() {
 async function refresh() {
   state.data = await api('/api/state');
   $('connections').replaceChildren();
-  for (const [key, name] of [['ai', 'AI analysis'], ['paypal', 'PayPal sandbox']]) {
+  for (const [key, name] of [['ai', 'API key (optional)'], ['paypal', 'PayPal sandbox']]) {
     const node = el('span', undefined, 'connection'); node.append(el('strong', name), document.createTextNode(state.data.config[key] ? ' · Configured (not yet verified)' : ' · Setup needed in .env')); $('connections').append(node);
   }
+  const connection = state.data.chatgpt;
+  const previous = $('chatgpt-profile').value;
+  $('chatgpt-profile').replaceChildren(new Option('Add account', ''));
+  for (const profile of connection.profiles) $('chatgpt-profile').append(new Option(profile.label, profile.id));
+  $('chatgpt-profile').value = connection.profileId || previous || connection.profiles[0]?.id || '';
+  $('chatgpt-status').textContent = connection.sharing ? 'Connected · Using ChatGPT plan' : connection.connected ? 'Signed in, but plan usage was not granted. Review your connection in ChatGPT.' : 'Connect your ChatGPT account to start. No API credit purchase is needed for this connection.';
+  if (connection.sharing) {
+    try {
+      const current = $('chatgpt-model').value;
+      const { models } = await api('/api/chatgpt/models');
+      $('chatgpt-model').replaceChildren(new Option('Choose a model', ''));
+      for (const model of models) $('chatgpt-model').append(new Option(model.name, model.slug));
+      if (models.some(model => model.slug === current)) $('chatgpt-model').value = current;
+      $('chatgpt-model').disabled = false;
+    } catch (error) { $('chatgpt-model').value = ''; $('chatgpt-status').textContent = error.message; }
+    if (!localStorage.getItem(`scopepay-plan-welcome-${connection.profileId}`) && !$('chatgpt-welcome').open) $('chatgpt-welcome').showModal();
+  } else { $('chatgpt-model').replaceChildren(new Option('Connect to load models', '')); $('chatgpt-model').disabled = true; }
   renderHistory(); syncControls();
 }
 function renderAnalysis(analysis) {
@@ -100,7 +120,19 @@ $('brief').addEventListener('input', invalidateReview);
 $('request').addEventListener('input', invalidateReview);
 $('load-example').addEventListener('click', () => { invalidateReview(); $('brief').value = state.data.sample.brief; $('request').value = state.data.sample.request; message('Example text loaded. Analyze it with AI or explore the prewritten sample.'); });
 $('sample').addEventListener('click', () => work(async () => { renderAnalysis(await api('/api/sample', {})); message('Showing prewritten sample results. No AI call or PayPal action occurred.'); }));
-$('analysis-form').addEventListener('submit', event => { event.preventDefault(); work(async () => { message('Comparing the request with your agreed scope…'); const result = await api('/api/analyze', { brief: $('brief').value, request: $('request').value }); await refresh(); renderAnalysis(result); message('Analysis ready. Review the evidence and clarify any uncertainty before pricing.'); }); });
+$('analysis-form').addEventListener('submit', event => { event.preventDefault(); work(async () => { message('Comparing the request with your agreed scope…'); const result = await api('/api/analyze', { brief: $('brief').value, request: $('request').value, source: $('ai-source').value, model: $('chatgpt-model').value }); await refresh(); renderAnalysis(result); message('Analysis ready. Review the evidence and clarify any uncertainty before pricing.'); }); });
+$('ai-source').addEventListener('change', syncControls);
+$('chatgpt-model').addEventListener('change', syncControls);
+$('chatgpt-connect').addEventListener('click', () => work(async () => {
+  if (location.hostname !== '127.0.0.1') { location.href = `http://127.0.0.1:${location.port}/`; return; }
+  const { url } = await api('/api/chatgpt/sign-in', { profileId: $('chatgpt-profile').value || undefined });
+  location.assign(url);
+}));
+$('chatgpt-signout').addEventListener('click', () => work(async () => {
+  const result = await api('/api/chatgpt/sign-out', {}); await refresh();
+  message(result.revoked ? 'Signed out of ChatGPT.' : 'Signed out locally. Remote revocation could not be confirmed; disconnect ScopePay in ChatGPT settings.', !result.revoked);
+}));
+$('chatgpt-welcome-close').addEventListener('click', () => { localStorage.setItem(`scopepay-plan-welcome-${state.data.chatgpt.profileId}`, '1'); $('chatgpt-welcome').close(); });
 $('pricing').addEventListener('input', () => { $('approval').checked = false; updateTotal(); syncControls(); });
 $('approval').addEventListener('change', syncControls);
 $('create-invoice').addEventListener('click', () => work(async () => { try { const order = await api('/api/orders', { analysisId: state.analysis.id, items: rows(), approved: $('approval').checked }); message(`Sandbox invoice saved: ${order.number}.`); } finally { await refresh(); } }));

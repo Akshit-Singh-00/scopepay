@@ -16,7 +16,7 @@ The PayPal adapter implements draft invoice creation, payment-link activation wi
 
 ## How we built it
 
-The application uses JavaScript ES modules, Node.js, HTML, and CSS, with no third-party runtime packages. The OpenAI Responses API is configured for structured JSON output, followed by server-side evidence and field validation. PayPal OAuth and Invoicing v2 calls run on the server and are restricted to sandbox endpoints.
+The application uses JavaScript ES modules, Node.js, HTML, and CSS. The OpenAI Responses API is configured for structured JSON output, followed by server-side evidence and field validation. The local app offers official Sign in with ChatGPT for eligible plan usage, or an explicitly selected, separately billed API key. The `jose` library verifies signed account identities. ChatGPT credentials remain in server memory; restarting requires reconnecting. PayPal OAuth and Invoicing v2 calls run on the server and are restricted to sandbox endpoints.
 
 Prices come from the freelancer, not the model. Totals use integer cents. Reviews, approved invoice items, PayPal invoice IDs, and an activity history are saved locally. One invoice attempt is permitted per analysis; an uncertain creation response is retained for reconciliation rather than retried automatically.
 
