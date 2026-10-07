@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ScopePay · Make extra work visible</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body>
+  <header class="topbar"><a class="brand" href="/"><span class="brand-icon">s</span>ScopePay<span class="beta">LAB</span></a><span class="environment"><i></i> PayPal sandbox</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">GOOD WORK DESERVES A CLEAR SCOPE</p><h1>A little extra?<br><span>Make it official.</span></h1><p class="lede">Turn “one more thing” into a clear conversation.<br>Review the scope, agree on the extras, and get paid.</p></div><aside class="flow-card"><p class="eyebrow">FROM REQUEST TO RECEIPT</p><ol><li><b>01</b><span>Compare with the brief<small>Every assessment has a source.</small></span></li><li><b>02</b><span>Review the change order<small>You decide the scope and price.</small></span></li><li><b>03</b><span>Create a PayPal invoice<small>Sandbox payments, real integration.</small></span></li></ol></aside></section>
+    <div id="connections" class="connections" aria-live="polite">Checking your connections…</div>
+    <div class="workspace">
+      <section class="panel input-panel"><div class="section-heading"><div><p class="eyebrow">01 / THE CONTEXT</p><h2>What was agreed?</h2></div><button id="load-example" class="text-button" type="button">Load example ↗</button></div>
+        <form id="analysis-form"><label for="brief">Original project brief</label><textarea id="brief" required maxlength="12000" rows="7" placeholder="Paste the agreed deliverables, exclusions, and revision allowance…"></textarea>
+          <label for="request">The new client request <span class="label-note">The “one more thing”</span></label><textarea id="request" required maxlength="12000" rows="5" placeholder="Paste the client’s request here…"></textarea>
+          <p class="small muted">Analyze sends these two texts to OpenAI. Use synthetic project details for this local prototype.</p><button class="primary full" id="analyze" type="submit">Analyze the scope <span>→</span></button>
+        </form><button id="sample" class="secondary full" type="button">Explore sample results</button><p class="small muted centered">Sample results are prewritten. No API call or invoice.</p>
+      </section>
+      <section class="panel results-panel"><div class="section-heading"><div><p class="eyebrow">02 / THE REVIEW</p><h2>Keep the conversation clear.</h2></div><span id="result-count" class="count">—</span></div><div id="results"><div class="empty"><div class="empty-symbol">≋</div><h3>Clarity starts with the brief.</h3><p>Add your original scope and the new request.<br>We’ll help you see what changed.</p><div class="legend"><span class="badge included">Included</span><span class="badge extra">Extra work</span><span class="badge unclear">Needs clarity</span></div></div></div></section>
+    </div>
+    <section id="order-panel" class="panel order-panel" hidden><div class="section-heading"><div><p class="eyebrow">03 / THE CHANGE ORDER</p><h2>Agree on the extras.</h2></div><span class="badge">USD · Sandbox</span></div><p class="muted">Choose the extra work and enter your own prices. Review this summary with your client before creating an invoice.</p><div id="pricing"></div><div class="total-line"><span>Extra work total</span><strong id="total">$0.00</strong></div><label for="change-order">Client-facing change order</label><textarea id="change-order" readonly rows="6"></textarea><p class="small muted">This preview is generated from your selections and prices. Nothing is sent to your client.</p><label class="checkbox-row"><input id="approval" type="checkbox"> I reviewed the scope and prices and obtained client approval.</label><button id="create-invoice" class="primary" type="button">Create sandbox invoice →</button><p id="invoice-help" class="small muted"></p></section>
+    <section class="panel history-panel"><div class="section-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2>Recent reviews & invoices</h2></div><span class="small muted">Saved on this computer</span></div><div id="history"></div></section>
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+    <footer><span>ScopePay / PayPal AI Hackathon 2026</span><span>Local prototype · Sandbox only</span></footer>
+  </main>
+</body></html>

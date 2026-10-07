@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+data/
+node_modules/
+*.log
+artifacts/
+# Local participation notes and account-bearing Devpost screenshots.
+HACKATHON.md
+scopepay-devpost-draft.png
