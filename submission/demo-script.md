@@ -15,4 +15,4 @@ This is a recording script. Real ChatGPT-plan analysis and the complete $1 sandb
 | 2:15–2:30 | Return and refresh status | Payment status comes from PayPal's authenticated API, not a success-page redirect. |
 | 2:30–2:40 | Show limitation and conclusion | ScopePay connects the request, scope evidence, reviewed price, and invoice. It is a local prototype; hosted access controls and freelancer validation are next. |
 
-The public YouTube URL is https://youtu.be/x0UYXrd_9oM. Add it to Devpost once the project editor is available; the latest attempt encountered planned maintenance.
+The public YouTube URL is https://youtu.be/x0UYXrd_9oM. It is saved in the Devpost draft and the embedded player is present in the project preview.

@@ -2,7 +2,7 @@
 
 An AI assistant for freelancers that checks new client requests against an agreed brief, quotes its evidence, and creates PayPal sandbox invoices for reviewed extra work.
 
-**Status:** local prototype with a verified end-to-end sandbox flow. Real ChatGPT-plan scope analysis produced the reviewed additions; a $1.00 PayPal sandbox invoice was created, activated, and paid using a US test buyer. ScopePay's authenticated PayPal status refresh confirmed PAID on 7 October 2026. Prewritten sample results are explicitly labeled and cannot create invoices. The [public demo](https://youtu.be/x0UYXrd_9oM) is available; hackathon submission still awaits final fields and entrant review.
+**Status:** local prototype with a verified end-to-end sandbox flow. Real ChatGPT-plan scope analysis produced the reviewed additions; a $1.00 PayPal sandbox invoice was created, activated, and paid using a US test buyer. ScopePay's authenticated PayPal status refresh confirmed PAID on 7 October 2026. Prewritten sample results are explicitly labeled and cannot create invoices. The [public demo](https://youtu.be/x0UYXrd_9oM) and [Devpost project preview](https://devpost.com/software/scopepay) are available; final hackathon submission awaits entrant review and acceptance of the rules and terms.
 
 ## Run locally
 
@@ -52,7 +52,7 @@ Tests cover evidence validation, exact money arithmetic, prohibited invoice item
 
 ## Hackathon work remaining
 
-See [submission/STATUS.md](submission/STATUS.md) for submission readiness. Real ChatGPT-plan sign-in, model discovery, and synthetic scope analysis passed on 7 October 2026. PayPal sandbox OAuth, invoice creation, activation with emails disabled, test-buyer payment, and authenticated PAID status retrieval also passed. See the [payment evidence](submission/screenshots/scopepay-sandbox-paid.png) and [public video walkthrough](https://youtu.be/x0UYXrd_9oM). The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. Still required: final Devpost fields, eligibility review, and entrant approval before final submission. Devpost displayed planned maintenance during the latest editing attempt. Freelancer feedback is a future validation step.
+See [submission/STATUS.md](submission/STATUS.md) for submission readiness. Real ChatGPT-plan sign-in, model discovery, and synthetic scope analysis passed on 7 October 2026. PayPal sandbox OAuth, invoice creation, activation with emails disabled, test-buyer payment, and authenticated PAID status retrieval also passed. See the [payment evidence](submission/screenshots/scopepay-sandbox-paid.png) and [public video walkthrough](https://youtu.be/x0UYXrd_9oM). The [public source repository](https://github.com/Akshit-Singh-00/scopepay) and local judge instructions are available. All required draft fields are saved; final entrant review, agreement to the rules/terms, and submission remain. Freelancer feedback is a future validation step.
 
 ## API references
 
